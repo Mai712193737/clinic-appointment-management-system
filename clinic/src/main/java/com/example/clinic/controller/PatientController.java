@@ -1,8 +1,8 @@
-package com.example.StudentsApis.controllers;
+package com.example.clinic.controller;
 
-import com.example.StudentsApis.dto.request.StudentRequestDto;
-import com.example.StudentsApis.dto.response.StudentResponseDto;
-import com.example.StudentsApis.services.StudentService;
+import com.example.clinic.dto.request.PatientRequestDto;
+import com.example.clinic.dto.response.PatientResponseDto;
+import com.example.clinic.service.PatientService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,28 +12,28 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/students")
+@RequestMapping("/api/patients")
 public class PatientController {
 
-    private final StudentService studentService;
+    private final PatientService patientService;
 
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
+    public PatientController(PatientService patientService) {
+        this.patientService = patientService;
     }
 
     @GetMapping
-    public ResponseEntity<List<StudentResponseDto>> getAllStudents() {
-        return ResponseEntity.ok(studentService.getAllStudents());
+    public ResponseEntity<List<PatientResponseDto>> getAllPatients() {
+        return ResponseEntity.ok(patientService.getAllPatients());
     }
 
     @PostMapping
-    public ResponseEntity<StudentResponseDto> createStudent(@Valid @RequestBody StudentRequestDto requestDto) {
-        StudentResponseDto response = studentService.addStudent(requestDto);
+    public ResponseEntity<PatientResponseDto> createPatient(@Valid @RequestBody PatientRequestDto requestDto) {
+        PatientResponseDto response = patientService.addPatient(requestDto);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StudentResponseDto> getStudentById(@PathVariable UUID id) {
-        return ResponseEntity.ok(studentService.getStudentById(id));
+    public ResponseEntity<PatientResponseDto> getPatientById(@PathVariable UUID id) {
+        return ResponseEntity.ok(patientService.getPatientById(id));
     }
 }

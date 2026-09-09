@@ -1,6 +1,6 @@
-package com.example.StudentsApis.repository;
+package com.example.clinic.repository;
 
-import com.example.StudentsApis.model.Student;
+import com.example.clinic.model.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

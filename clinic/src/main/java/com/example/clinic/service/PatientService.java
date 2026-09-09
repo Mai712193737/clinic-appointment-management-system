@@ -1,9 +1,9 @@
-package com.example.PatientsApis.services;
+package com.example.clinic.service;
 
-import com.example.PatientsApis.dto.request.PatientRequestDto;
-import com.example.PatientsApis.dto.response.PatientResponseDto;
-import com.example.PatientsApis.model.Patient;
-import com.example.PatientsApis.repository.PatientRepository;
+import com.example.clinic.dto.request.PatientRequestDto;
+import com.example.clinic.dto.response.PatientResponseDto;
+import com.example.clinic.model.Patient;
+import com.example.clinic.repository.PatientRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
