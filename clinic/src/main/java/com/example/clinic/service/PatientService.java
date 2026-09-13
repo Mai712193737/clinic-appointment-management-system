@@ -12,34 +12,53 @@ import java.util.UUID;
 @Service
 public class PatientService {
 
-    private final PatientRepository PatientRepository;
+    private final PatientRepository patientRepository;
 
-    public PatientService(PatientRepository PatientRepository) {
-        this.PatientRepository = PatientRepository;
+    public PatientService(PatientRepository patientRepository) {
+        this.patientRepository = patientRepository;
     }
 
     public PatientResponseDto addPatient(PatientRequestDto requestDto) {
-        if (PatientRepository.existsByEmail(requestDto.email())) {
+        if (patientRepository.existsByEmail(requestDto.email())) {
             throw new IllegalArgumentException("Email is already taken!");
         }
 
-        Patient Patient = new Patient();
-        Patient.setName(requestDto.name());
-        Patient.setEmail(requestDto.email());
-        Patient.setPassword(requestDto.password());
+        Patient patient = new Patient();
+        patient.setFirstName(requestDto.firstName());
+        patient.setLastName(requestDto.lastName());
+        patient.setBirthDate(requestDto.birthDate());
+        patient.setPhoneNumber(requestDto.phoneNumber());
+        patient.setGender(requestDto.gender());
+        patient.setEmail(requestDto.email());
+        patient.setPassword(requestDto.password());
 
-        Patient savedPatient = PatientRepository.save(Patient);
+        Patient savedPatient = patientRepository.save(patient);
 
         return mapToResponseDto(savedPatient);
     }
+
     public List<PatientResponseDto> getAllPatients() {
-        return PatientRepository.findAll().stream().map(this::mapToResponseDto).toList();
+        return patientRepository.findAll().stream()
+                .map(this::mapToResponseDto)
+                .toList();
     }
+
     public PatientResponseDto getPatientById(UUID id) {
-        Patient Patient = PatientRepository.findById(id).orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
-        return mapToResponseDto(Patient);
+        Patient patient = patientRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
+        return mapToResponseDto(patient);
     }
-    private PatientResponseDto mapToResponseDto(Patient Patient) {
-        return new PatientResponseDto(Patient.getId(), Patient.getName(), Patient.getEmail());
+
+    private PatientResponseDto mapToResponseDto(Patient patient) {
+        return new PatientResponseDto(
+                patient.getId(),
+                patient.getFirstName(),
+                patient.getLastName(),
+                patient.getBirthDate(),
+                patient.getPhoneNumber(),
+                patient.getGender(),
+                patient.getRegistrationDate(),
+                patient.getEmail()
+        );
     }
 }
