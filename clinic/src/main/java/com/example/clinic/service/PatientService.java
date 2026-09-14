@@ -49,6 +49,36 @@ public class PatientService {
         return mapToResponseDto(patient);
     }
 
+    public PatientResponseDto updatePatient(UUID id, PatientRequestDto requestDto) {
+        Patient patient = patientRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
+
+        if (!patient.getEmail().equalsIgnoreCase(requestDto.email())
+                && patientRepository.existsByEmail(requestDto.email())) {
+            throw new IllegalArgumentException("Email is already taken by another patient!");
+        }
+
+        patient.setFirstName(requestDto.firstName());
+        patient.setLastName(requestDto.lastName());
+        patient.setBirthDate(requestDto.birthDate());
+        patient.setPhoneNumber(requestDto.phoneNumber());
+        patient.setGender(requestDto.gender());
+        patient.setEmail(requestDto.email());
+        if (requestDto.password() != null && !requestDto.password().isBlank()) {
+            patient.setPassword(requestDto.password());
+        }
+
+        Patient updatedPatient = patientRepository.save(patient);
+        return mapToResponseDto(updatedPatient);
+    }
+
+    public void deletePatient(UUID id) {
+        Patient patient = patientRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
+
+        patientRepository.delete(patient);
+    }
+
     private PatientResponseDto mapToResponseDto(Patient patient) {
         return new PatientResponseDto(
                 patient.getId(),
