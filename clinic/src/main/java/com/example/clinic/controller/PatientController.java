@@ -1,7 +1,5 @@
 package com.example.clinic.controller;
 
-import com.example.clinic.dto.request.PatientRequestDto;
-import com.example.clinic.dto.response.PatientResponseDto;
 import com.example.clinic.service.PatientService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -22,24 +20,24 @@ public class PatientController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PatientResponseDto>> getAllPatients() {
+    public ResponseEntity<List<com.example.clinic.dto.response.PatientResponse>> getAllPatients() {
         return ResponseEntity.ok(patientService.getAllPatients());
     }
 
     @PostMapping
-    public ResponseEntity<PatientResponseDto> createPatient(@Valid @RequestBody PatientRequestDto requestDto) {
-        PatientResponseDto response = patientService.addPatient(requestDto);
+    public ResponseEntity<com.example.clinic.dto.response.PatientResponse> createPatient(@Valid @RequestBody com.example.clinic.dto.request.PatientRequest requestDto) {
+        com.example.clinic.dto.response.PatientResponse response = patientService.addPatient(requestDto);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PatientResponseDto> getPatientById(@PathVariable UUID id) {
+    public ResponseEntity<com.example.clinic.dto.response.PatientResponse> getPatientById(@PathVariable UUID id) {
         return ResponseEntity.ok(patientService.getPatientById(id));
     }
 
 
     @PutMapping("/{id")
-    public ResponseEntity<PatientResponseDto> updatePatient(@PathVariable UUID id){
+    public ResponseEntity<com.example.clinic.dto.response.PatientResponse> updatePatient(@PathVariable UUID id){
         return ResponseEntity.ok(patientService.getPatientById(id));
     }
 
