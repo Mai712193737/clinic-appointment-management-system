@@ -10,7 +10,7 @@ import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
 
-public record PatientRequestDto(
+public record PatientRequest(
         @NotBlank(message = "First name cannot be empty")
         String firstName,
 
