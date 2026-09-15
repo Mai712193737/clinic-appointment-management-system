@@ -1,7 +1,5 @@
 package com.example.clinic.service;
 
-import com.example.clinic.dto.request.DoctorRequestDto;
-import com.example.clinic.dto.response.DoctorResponseDto;
 import com.example.clinic.model.Doctor;
 import com.example.clinic.repository.DoctorRepository;
 import org.springframework.stereotype.Service;
@@ -18,7 +16,7 @@ public class DoctorService {
         this.doctorRepository = doctorRepository;
     }
 
-    public DoctorResponseDto addDoctor(DoctorRequestDto requestDto) {
+    public com.example.clinic.dto.response.DoctorResponse addDoctor(com.example.clinic.dto.request.DoctorRequest requestDto) {
         if (doctorRepository.existsByEmail(requestDto.email())) {
             throw new IllegalArgumentException("Email is already taken!");
         }
@@ -34,18 +32,18 @@ public class DoctorService {
         return mapToResponseDto(savedDoctor);
     }
 
-    public List<DoctorResponseDto> getAllDoctors() {
+    public List<com.example.clinic.dto.response.DoctorResponse> getAllDoctors() {
         return doctorRepository.findAll().stream().map(this::mapToResponseDto).toList();
     }
 
-    public DoctorResponseDto getDoctorById(UUID id) {
+    public com.example.clinic.dto.response.DoctorResponse getDoctorById(UUID id) {
         Doctor doctor = doctorRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Doctor not found with id: " + id));
         return mapToResponseDto(doctor);
     }
 
-    private DoctorResponseDto mapToResponseDto(Doctor doctor) {
-        return new DoctorResponseDto(
+    private com.example.clinic.dto.response.DoctorResponse mapToResponseDto(Doctor doctor) {
+        return new com.example.clinic.dto.response.DoctorResponse(
                 doctor.getId(),
                 doctor.getName(),
                 doctor.getSpecialization(),

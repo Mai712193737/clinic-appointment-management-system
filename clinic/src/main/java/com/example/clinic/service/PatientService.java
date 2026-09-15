@@ -1,7 +1,5 @@
 package com.example.clinic.service;
 
-import com.example.clinic.dto.request.PatientRequestDto;
-import com.example.clinic.dto.response.PatientResponseDto;
 import com.example.clinic.model.Patient;
 import com.example.clinic.repository.PatientRepository;
 import org.springframework.stereotype.Service;
@@ -18,7 +16,7 @@ public class PatientService {
         this.patientRepository = patientRepository;
     }
 
-    public PatientResponseDto addPatient(PatientRequestDto requestDto) {
+    public com.example.clinic.dto.response.PatientResponse addPatient(com.example.clinic.dto.request.PatientRequest requestDto) {
         if (patientRepository.existsByEmail(requestDto.email())) {
             throw new IllegalArgumentException("Email is already taken!");
         }
@@ -37,19 +35,19 @@ public class PatientService {
         return mapToResponseDto(savedPatient);
     }
 
-    public List<PatientResponseDto> getAllPatients() {
+    public List<com.example.clinic.dto.response.PatientResponse> getAllPatients() {
         return patientRepository.findAll().stream()
                 .map(this::mapToResponseDto)
                 .toList();
     }
 
-    public PatientResponseDto getPatientById(UUID id) {
+    public com.example.clinic.dto.response.PatientResponse getPatientById(UUID id) {
         Patient patient = patientRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
         return mapToResponseDto(patient);
     }
 
-    public PatientResponseDto updatePatient(UUID id, PatientRequestDto requestDto) {
+    public com.example.clinic.dto.response.PatientResponse updatePatient(UUID id, com.example.clinic.dto.request.PatientRequest requestDto) {
         Patient patient = patientRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
 
@@ -79,8 +77,8 @@ public class PatientService {
         patientRepository.delete(patient);
     }
 
-    private PatientResponseDto mapToResponseDto(Patient patient) {
-        return new PatientResponseDto(
+    private com.example.clinic.dto.response.PatientResponse mapToResponseDto(Patient patient) {
+        return new com.example.clinic.dto.response.PatientResponse(
                 patient.getId(),
                 patient.getFirstName(),
                 patient.getLastName(),
