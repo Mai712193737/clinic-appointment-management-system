@@ -1,4 +1,4 @@
-package main.java.com.example.clinic.model;
+package com.example.clinic.model;
 
 public class Appointment {
 }
