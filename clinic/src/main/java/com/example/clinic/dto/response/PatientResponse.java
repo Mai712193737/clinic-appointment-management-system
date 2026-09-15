@@ -4,7 +4,7 @@ import com.example.clinic.model.enums.Gender;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public record PatientResponseDto(
+public record PatientResponse(
         UUID id,
         String firstName,
         String lastName,
