@@ -1,4 +1,4 @@
 package com.example.clinic.repository.InMemoryRepository;
 
-public class InMemoryDoctorRepo {
+public class InMemoryAppointmentRepo {
 }
