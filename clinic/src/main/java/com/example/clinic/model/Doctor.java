@@ -56,4 +56,8 @@ public class Doctor {
         this.experienceYears = experienceYears;
         this.consultationFee = consultationFee;
     }
+
+    public void setSpecialization(Specialization specialization) {
+        this.specialization = specialization;
+    }
 }
