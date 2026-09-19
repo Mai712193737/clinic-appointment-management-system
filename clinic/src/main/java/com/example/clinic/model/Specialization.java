@@ -1,3 +1,4 @@
+
 package com.example.clinic.model;
 
 import jakarta.persistence.Entity;
@@ -11,7 +12,6 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Setter
 @Getter
@@ -37,5 +37,4 @@ public class Specialization {
         this.name = name;
         this.description = description;
     }
-
 }

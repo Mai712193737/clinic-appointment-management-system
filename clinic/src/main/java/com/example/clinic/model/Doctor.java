@@ -56,4 +56,6 @@ public class Doctor {
         this.experienceYears = experienceYears;
         this.consultationFee = consultationFee;
     }
+
+
 }
