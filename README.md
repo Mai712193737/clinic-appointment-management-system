@@ -427,8 +427,7 @@ clinic/
 
 The following class diagram represents the main classes, attributes, methods, and relationships of the Clinic Appointment Management System.
 
-![Clinic Appointment Management System Class Diagram](docs/class-diagram.png)
----
+![Clinic Appointment Management System Class Diagram](docs/class-diagram.png)---
 
 ## Getting Started
 
