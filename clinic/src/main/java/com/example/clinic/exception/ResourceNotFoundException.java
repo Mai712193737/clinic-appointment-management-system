@@ -1,5 +1,4 @@
 package com.example.clinic.exception;
 
-public class Exception {
-
+public class ResourceNotFoundException {
 }
