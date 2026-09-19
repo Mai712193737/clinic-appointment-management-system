@@ -354,23 +354,80 @@ The technology stack will be documented and updated as the implementation progre
 
 ## Project Structure
 
-The project structure will evolve as the implementation progresses.
-
 ```text
-clinic-appointment-management-system/
+clinic/
 │
 ├── src/
 │   ├── main/
-│   │   └── java/
+│   │   ├── java/
+│   │   │   ├── com/
+│   │   │   │   └── example/
+│   │   │   │       └── clinic/
+│   │   │   │           ├── controller/
+│   │   │   │           │   └── PatientController.java
+│   │   │   │           │
+│   │   │   │           ├── dto/
+│   │   │   │           │   ├── request/
+│   │   │   │           │   │   ├── DoctorRequestDto.java
+│   │   │   │           │   │   └── PatientRequestDto.java
+│   │   │   │           │   │
+│   │   │   │           │   └── response/
+│   │   │   │           │       ├── DoctorResponseDto.java
+│   │   │   │           │       └── PatientResponseDto.java
+│   │   │   │           │
+│   │   │   │           ├── exception/
+│   │   │   │           │   └── Exception.java
+│   │   │   │           │
+│   │   │   │           ├── model/
+│   │   │   │           │   ├── Doctor.java
+│   │   │   │           │   ├── Patient.java
+│   │   │   │           │   ├── Specialization.java
+│   │   │   │           │   │
+│   │   │   │           │   └── enums/
+│   │   │   │           │       └── Gender.java
+│   │   │   │           │
+│   │   │   │           ├── repository/
+│   │   │   │           │   ├── DoctorRepository.java
+│   │   │   │           │   └── PatientRepository.java
+│   │   │   │           │
+│   │   │   │           └── service/
+│   │   │   │               ├── DoctorService.java
+│   │   │   │               └── PatientService.java
+│   │   │   │
+│   │   │   └── main/
+│   │   │       └── java/
+│   │   │           └── com/
+│   │   │               └── example/
+│   │   │                   └── clinic/
+│   │   │                       └── repository/
+│   │   │                           └── InMemoryRepository/
+│   │   │
+│   │   └── resources/
+│   │       └── application.properties
 │   │
 │   └── test/
+│       └── java/
+│           └── com/
+│               └── example/
+│                   └── clinic/
+│                       └── ClinicApplicationTests.java
 │
 ├── docs/
+│   └── class-diagram.png
 │
-├── README.md
 ├── .gitignore
-└── pom.xml
+├── .gitattributes
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+└── README.md
 ```
+
+## Class Diagram
+
+The following class diagram represents the main classes, attributes, methods, and relationships of the Clinic Appointment Management System.
+
+![Clinic Appointment Management System Class Diagram](docs/class-diagram.png)
 
 ---
 
