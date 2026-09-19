@@ -443,7 +443,7 @@ Make sure you have the following installed:
 ### Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone <[repository-url](https://github.com/Mai712193737/clinic-appointment-management-system.git)>
 ```
 
 ### Navigate to the Project
