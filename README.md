@@ -270,7 +270,7 @@ Passwords must never be stored as plain text.
 The system supports the following roles:
 
 ```text
-ADMIN
+USER
 DOCTOR
 PATIENT
 ```
@@ -428,7 +428,6 @@ clinic/
 The following class diagram represents the main classes, attributes, methods, and relationships of the Clinic Appointment Management System.
 
 ![Clinic Appointment Management System Class Diagram](docs/class-diagram.png)
-
 ---
 
 ## Getting Started
