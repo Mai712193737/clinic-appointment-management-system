@@ -41,6 +41,11 @@ public class SpecializationService {
         }
     }
 
+    public Specialization getSpecializationByName(String specializationName) {
+        return specializationRepository.findByName(specializationName)
+                .orElseThrow(() -> new RuntimeException("Specialization not found with name: " + specializationName));
+    }
+
      public List<Specialization> getAllSpecializations() {
         return specializationRepository.findAll();
     }
