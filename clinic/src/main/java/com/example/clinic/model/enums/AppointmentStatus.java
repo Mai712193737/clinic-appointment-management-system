@@ -1,4 +1,4 @@
-package main.java.com.example.clinic.model.enums;
+package com.example.clinic.model.enums;
 
 public enum AppointmentStatus {
     SCHEDULED,
