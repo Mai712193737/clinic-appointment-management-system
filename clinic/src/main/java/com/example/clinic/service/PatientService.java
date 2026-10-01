@@ -51,8 +51,7 @@ public class PatientService {
         Patient patient = patientRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
 
-        if (!patient.getEmail().equalsIgnoreCase(requestDto.email())
-                && patientRepository.existsByEmail(requestDto.email())) {
+        if (patientRepository.existsByEmail(requestDto.email())) {
             throw new IllegalArgumentException("Email is already taken by another patient!");
         }
 
