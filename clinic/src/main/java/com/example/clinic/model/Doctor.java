@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Setter
@@ -40,6 +42,9 @@ public class Doctor {
     private Integer experienceYears;
 
     private BigDecimal consultationFee;
+
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<WorkingPeriod> workingPeriods = new ArrayList<>();
 
     public Doctor() {
     }
