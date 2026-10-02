@@ -2,11 +2,12 @@ package com.example.clinic.dto.request;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.UUID;
 
 public class BookAppointmentRequest {
 
-    private long patientId;
-    private long doctorId;
+    private UUID patientId;
+    private UUID doctorId;
     private LocalDate appointmentDate;
     private LocalTime appointmentTime;
     private String reason;
@@ -14,8 +15,8 @@ public class BookAppointmentRequest {
     public BookAppointmentRequest() {
     }
 
-    public BookAppointmentRequest(long patientId,
-                                  long doctorId,
+    public BookAppointmentRequest(UUID patientId,
+                                  UUID doctorId,
                                   LocalDate appointmentDate,
                                   LocalTime appointmentTime,
                                   String reason) {
@@ -26,19 +27,19 @@ public class BookAppointmentRequest {
         this.reason = reason;
     }
 
-    public long getPatientId() {
+    public UUID getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(long patientId) {
+    public void setPatientId(UUID patientId) {
         this.patientId = patientId;
     }
 
-    public long getDoctorId() {
+    public UUID getDoctorId() {
         return doctorId;
     }
 
-    public void setDoctorId(long doctorId) {
+    public void setDoctorId(UUID doctorId) {
         this.doctorId = doctorId;
     }
 

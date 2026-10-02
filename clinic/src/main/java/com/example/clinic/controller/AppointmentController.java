@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/appointments")
@@ -29,7 +30,7 @@ public class AppointmentController {
 
     @PatchMapping("/{appointmentId}/confirm")
     public ApiResponse<Void> confirmAppointment(
-            @PathVariable long appointmentId) {
+            @PathVariable UUID appointmentId) {
         return appointmentService.confirmAppointment(appointmentId);
     }
 
@@ -37,40 +38,40 @@ public class AppointmentController {
     // ولما تضيف Security/JWT خدهم من الـ token بدل كده.
     @PatchMapping("/{appointmentId}/cancel")
     public ApiResponse<Void> cancelAppointment(
-            @PathVariable long appointmentId,
-            @RequestParam long requesterId,
+            @PathVariable UUID appointmentId,
+            @RequestParam UUID requesterId,
             @RequestParam Role requesterRole) {
         return appointmentService.cancelAppointment(appointmentId, requesterId, requesterRole);
     }
 
     @PatchMapping("/{appointmentId}/complete")
     public ApiResponse<Void> completeAppointment(
-            @PathVariable long appointmentId) {
+            @PathVariable UUID appointmentId) {
         return appointmentService.completeAppointment(appointmentId);
     }
 
     @PatchMapping("/{appointmentId}/no-show")
     public ApiResponse<Void> markAsNoShow(
-            @PathVariable long appointmentId) {
+            @PathVariable UUID appointmentId) {
         return appointmentService.markAsNoShow(appointmentId);
     }
 
     @GetMapping("/available-slots")
     public ApiResponse<List<LocalTime>> getAvailableSlots(
-            @RequestParam long doctorId,
+            @RequestParam UUID doctorId,
             @RequestParam LocalDate date) {
         return appointmentService.getAvailableSlots(doctorId, date);
     }
 
     @GetMapping("/patient/{patientId}")
     public ApiResponse<List<AppointmentResponse>> getPatientAppointments(
-            @PathVariable long patientId) {
+            @PathVariable UUID patientId) {
         return appointmentService.getPatientAppointments(patientId);
     }
 
     @GetMapping("/doctor/{doctorId}")
     public ApiResponse<List<AppointmentResponse>> getDoctorAppointments(
-            @PathVariable long doctorId) {
+            @PathVariable UUID doctorId) {
         return appointmentService.getDoctorAppointments(doctorId);
     }
 
