@@ -1,28 +1,19 @@
 package com.example.clinic.repository;
 
 import com.example.clinic.model.Appointment;
-import com.example.clinic.model.enums.AppointmentStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
+import java.util.UUID;
 
-public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
+@Repository
+public interface AppointmentRepository extends JpaRepository<Appointment, UUID> {
 
-    List<Appointment> findByPatientId(Long patientId);
+    List<Appointment> findByDoctorId(UUID doctorId);
 
-    List<Appointment> findByDoctorId(Long doctorId);
+    List<Appointment> findByPatientId(UUID patientId);
 
-    List<Appointment> findByAppointmentDate(LocalDate date);
-
-    List<Appointment> findByStatus(AppointmentStatus status);
-
-    boolean existsByDoctor_IdAndAppointmentDateAndAppointmentTime(
-            Long doctorId,
-            LocalDate date,
-            LocalTime time
-    );
-    }
-
-
+    List<Appointment> findByDoctorIdAndDate(UUID doctorId, LocalDate date);
+}
