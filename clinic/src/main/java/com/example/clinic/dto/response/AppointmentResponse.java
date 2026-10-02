@@ -7,20 +7,20 @@ import java.time.LocalTime;
 import java.util.UUID;
 
 public class AppointmentResponse {
-    private Long id;
-    private long patientId;
-    private long doctorId;
+    private UUID id;
+    private UUID patientId;
+    private UUID doctorId;
     private LocalDate appointmentDate;
     private LocalTime appointmentTime;
     private String reason;
     private AppointmentStatus status;
 
-    public AppointmentResponse(Long id, UUID uuid, UUID id1, LocalDate date, LocalTime time, String reason, AppointmentStatus status) {
+    public AppointmentResponse() {
     }
 
-    public AppointmentResponse(Long id,
-                               long patientId,
-                               long doctorId,
+    public AppointmentResponse(UUID id,
+                               UUID patientId,
+                               UUID doctorId,
                                LocalDate appointmentDate,
                                LocalTime appointmentTime,
                                String reason,
@@ -34,27 +34,27 @@ public class AppointmentResponse {
         this.status = status;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public long getPatientId() {
+    public UUID getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(long patientId) {
+    public void setPatientId(UUID patientId) {
         this.patientId = patientId;
     }
 
-    public long getDoctorId() {
+    public UUID getDoctorId() {
         return doctorId;
     }
 
-    public void setDoctorId(long doctorId) {
+    public void setDoctorId(UUID doctorId) {
         this.doctorId = doctorId;
     }
 
