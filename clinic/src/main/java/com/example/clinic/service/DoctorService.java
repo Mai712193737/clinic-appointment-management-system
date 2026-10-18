@@ -11,7 +11,8 @@ import com.example.clinic.repository.DoctorRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import com.example.clinic.repository.SpecializationRepository;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.UUID;
 
@@ -56,6 +57,17 @@ public class DoctorService {
         Doctor doctor = doctorRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Doctor not found with id: " + id));
         return mapToResponseDto(doctor);
+    }
+
+
+    public Page<DoctorResponse> searchDoctors(
+            String name,
+            String specialization,
+            Pageable pageable) {
+
+        return doctorRepository
+                .searchDoctors(name, specialization, pageable)
+                .map(this::mapToResponseDto);
     }
 
     public DoctorResponse updateDoctorById(UUID id,DoctorRequest requestDto) {

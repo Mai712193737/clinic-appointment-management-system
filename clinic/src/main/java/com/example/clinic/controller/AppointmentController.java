@@ -1,7 +1,7 @@
 package com.example.clinic.controller;
 
-import com.example.clinic.dto.request.BookAppointmentRequest;
 import com.example.clinic.dto.ApiResponse;
+import com.example.clinic.dto.request.BookAppointmentRequest;
 import com.example.clinic.dto.response.AppointmentResponse;
 import com.example.clinic.model.enums.Role;
 import com.example.clinic.service.AppointmentService;
@@ -34,14 +34,13 @@ public class AppointmentController {
         return appointmentService.confirmAppointment(appointmentId);
     }
 
-    // مؤقتًا requesterId و requesterRole جايين من الـ query params،
-    // ولما تضيف Security/JWT خدهم من الـ token بدل كده.
     @PatchMapping("/{appointmentId}/cancel")
     public ApiResponse<Void> cancelAppointment(
             @PathVariable UUID appointmentId,
             @RequestParam UUID requesterId,
             @RequestParam Role requesterRole) {
-        return appointmentService.cancelAppointment(appointmentId, requesterId, requesterRole);
+        return appointmentService.cancelAppointment(
+                appointmentId, requesterId, requesterRole);
     }
 
     @PatchMapping("/{appointmentId}/complete")
