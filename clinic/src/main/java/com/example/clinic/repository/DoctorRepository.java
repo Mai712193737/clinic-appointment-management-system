@@ -1,6 +1,8 @@
 package com.example.clinic.repository;
 
 import com.example.clinic.model.Doctor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Range;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,4 +15,6 @@ public interface DoctorRepository extends JpaRepository<Doctor, UUID> {
     Optional<Doctor> findByEmail(String email);
     List<Doctor> findByNameContaining(String name);
     boolean existsByEmail(String email);
+
+    <T> Range<T> searchDoctors(String name, String specialization, Pageable pageable);
 }
