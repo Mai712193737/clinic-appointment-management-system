@@ -4,7 +4,6 @@ import com.example.clinic.dto.WorkingPeriodDto;
 import jakarta.validation.constraints.NotBlank;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 public record DoctorRequest(
         @NotBlank(message = "First name cannot be empty")
